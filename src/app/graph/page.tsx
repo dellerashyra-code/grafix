@@ -12,8 +12,8 @@ export default function GraphPage(){
    const base=compileFunction(expr);
    const data:any[]=[];
    if(showParent)data.push({fn:expr,color:"#9aa9bd",graphType:"polyline",attr:{ "stroke-dasharray":"5 5" }});
-   const inner = expr.replace(/\bx\b/g, `((${b})*(x-(${h})))`);\n   data.push({fn:`(${a})*(${inner})+(${k})`,color:"#2563eb",graphType:"polyline"});
-   plotRef.current.innerHTML="";
+   const inner = expr.replace(/\bx\b/g, `((${b})*(x-(${h})))`);
+data.push({fn:`(${a})*(${inner})+(${k})`,color:"#2563eb",graphType:"polyline"});plotRef.current.innerHTML="";
    functionPlot({target:plotRef.current,width:Math.max(300,plotRef.current.clientWidth),height:390, xAxis:{domain:[-10,10]},yAxis:{domain:[-10,10]},grid:true,disableZoom:false,data});
    setError("");
   }catch(e){setError(e instanceof Error?e.message:"Unable to plot this expression.");}
